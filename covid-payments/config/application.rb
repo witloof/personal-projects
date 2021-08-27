@@ -18,16 +18,16 @@ module CovidPayments
     # the framework and any gems in your application.
     config.payment_api_request_timeout = 300
     config.payment_api_request_timeout = 300
-    config.payment_service_url = "https://proxy.bgpay.digital/api/payment/request"
-    config.app_key = "5f89c8767bea8"
-    config.public_key = "5f89c8767bea5"
-    config.secrete_key = "5f89c8767bea3"
-    config.twilio_account_sid = "AC01b87b75342719b555c2c6562d926b79"
-    config.twilio_auth_token = "89d273ef975e65b670c0c9b8bb741e99"
+    config.payment_service_url = ""
+    config.app_key = ""
+    config.public_key = ""
+    config.secrete_key = ""
+    config.twilio_account_sid = ""
+    config.twilio_auth_token = ""
 
 
     Sentry.init do |config|
-      config.dsn = 'https://ece5ba9e44224882bf9bda4f9e9a30d9@o547738.ingest.sentry.io/5670373'
+      config.dsn = ''
       config.breadcrumbs_logger = [:active_support_logger]
     
       # Set tracesSampleRate to 1.0 to capture 100%
