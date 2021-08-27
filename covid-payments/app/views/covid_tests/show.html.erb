@@ -1,0 +1,7 @@
+<div class="container text-gray test-details">
+  <% if  @payment_status  %>
+    <%= render "shared/payment_status/success", covid_test: @covid_test  %>
+  <% else %>
+    <%= render "shared/payment_status/wainting", covid_test: @covid_test %>
+ <% end %>
+</div>

@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="d-flex flex-row justify-content-between mb-4">
+    <h4>Passagers habilités à faire le test</h4>
+  </div>
+  <%= form_tag(paids_admin_covid_tests_path, method: :get, class: "inline-form search_form") do %>
+    <div class="row py-4 mb-4">
+      <div class="col-md-9">
+        <%= text_field_tag :payment_code, "",  placeholder: "Entrer un code de paiement", class:"form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= submit_tag 'Trouver', class: "btn btn-primary btn-rounded" %>
+      </div>
+    </div>
+  <% end %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Voyageur</th>
+        <th>Code</th>
+        <th>Départ</th>
+        <th>Vol</th>
+        <th>Montant</th>
+        <th>Date</th>
+        <th>Etat</th>
+        <% if @user_policy.can_see_test_bill? %>
+          <th>Bon</th>
+        <% end %>
+        <% if @user_policy.can_perform_test? %>
+          <th>Test</th>
+        <% end %>
+        <% if @user_policy.can_print_barcode? %>
+          <th>Code barre</th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_covid_tests.each do |admin_covid_test| %>
+        <tr>
+          <td><%= admin_covid_test.travel.traveler.full_name %></td>
+          <td><%= link_to admin_covid_test.payment_code, admin_covid_test_path(admin_covid_test)%></td>
+          <td><%= admin_covid_test.travel.from_country.name%></td>
+          <td><%= admin_covid_test.travel.flight %></td>
+          <td><%= number_to_currency(admin_covid_test.amount, :unit => admin_covid_test.currency, :precision => 0) %></td>
+          <td><%= l (admin_covid_test.created_at) %></td>
+          <td>
+            <% if admin_covid_test.payed %>
+              <span class="badge badge-pill badge-success">Payé</span>
+            <% else %>
+              <span class="badge badge-pill badge-danger">En attente</span>
+            <% end %>
+          </td>
+           <% if @user_policy.can_see_test_bill? %>
+            <td class="text-center">
+              <%= link_to bill_admin_covid_test_path(admin_covid_test, format: :pdf), {target: "_blank"} do %>
+              <%= fa_icon "file-text"%>
+             <% end %>
+            </td>
+            <% end %>
+          <% if @user_policy.can_perform_test? %>
+            <td>
+              <% if admin_covid_test.tested_at.nil? %>
+                <%= link_to 'Tester', [:admin, admin_covid_test], class: "btn btn-primary btn-sm" %>
+              <% else %>
+                 <span class="badge badge-pill badge-success">Testé</span>
+              <% end %>
+            </td>
+          <% end %>
+          <% if @user_policy.can_print_barcode? %>
+            <td class="text-center">
+              <%= link_to print_barcode_admin_covid_test_path(admin_covid_test, format: :pdf), {target: "_blank", class:"btn btn-default border"} do %>
+              <%= fa_icon "barcode"%> Imprimer
+             <% end %>
+            </td>
+            <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

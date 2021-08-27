@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-12 text-center">
+       <%= image_tag wicked_pdf_asset_base64('logo_congo.jpg'), width: 400 %>
+       <h2 class="font-weight-bold" style="color:#009900">COVID-2019 TEST REPORT</h2>
+    </div>
+  </div>
+  <table style="width:100%; margin-top:15px">
+    <tbody>
+      <tr>
+        <td>
+          <table>
+            <tbody>
+              <tr>
+                <td>Last name(s) and First name(s):</td>
+                <td><%= @admin_covid_test.travel.traveler.last_name %> <%= @admin_covid_test.travel.traveler.first_name %></td>
+              </tr>
+               <tr>
+                <td>Sex</td>
+                <td><%= @admin_covid_test&.travel&.traveler&.sexe == 'homme' ? 'Man' : 'Woman' %></td>
+              </tr>
+              <tr>
+                <td>Type of analysis</td>
+                <td><strong>RT-PCR</strong></td>
+              </tr>
+               <tr>
+                <td>CNI/Passport number</td>
+                <td><%= @admin_covid_test&.travel&.traveler&.identification_number %></td>
+              </tr>
+              <tr>
+                <td>Collection date</td>
+                <td><%= @admin_covid_test.tested_at.strftime("%d/%m/%Y") %></td>
+              </tr>
+              <tr>
+                <td>Hour</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Test center:</td>
+                <td><%=  @admin_covid_test.counter_agent.centre %> <%= @admin_covid_test.counter_agent.user.airport.name %></td>
+              </tr>
+            <tbody>
+          </table>
+        </td>
+        <td>
+          <table>
+              <tbody>
+                <tr>
+                  <td><%= @admin_covid_test.tested_at.strftime("%d/%m/%Y") %></td>
+                </tr>
+                <tr>
+                  <td>  <%= image_tag rails_blob_url(@admin_covid_test.barcode), height: 100 if @admin_covid_test.barcode.attached? %></td>
+                </tr>
+                <tr>
+                  <td style="letter-spacing:6px"><%= @admin_covid_test.payment_code %></td>
+                </tr>
+              <tbody>
+            </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    <div class="row d-flex flex-row justify-content-between">
+    <hr class="col-12">
+    <div class="col-12">
+      <h3>Test information</h3>
+      <table class="table">
+        <thead style="background-color:#dec4a1">
+          <tr>
+            <th>Amplified genes</th>
+            <th>Test version</th>
+            <th>CT</th>
+            <th>Test</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border: 1px solid #e5e5e5;">
+            <td>
+            <ul>
+              <li>RdRp</li>
+              <li>E</li>
+            </ul>
+            </td>
+            <td>1</td>
+            <td></td>
+            <td>BIOSYNEX AMPLIQUICK SARS - COV-2</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Test result:</td>
+            <td style="text-align:center; font-weight: bold;background-color:<%=  @admin_covid_test.result == 'positive' ?  '#ffadad' : '#ccff66' %>"><%= @admin_covid_test.result == 'positive' ? 'Positive' : 'Negative' %></td>
+          <tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <table class="table table-borderless" style="border:0">
+      <tbody>
+        <tr>
+          <td width="50%">
+            <table class="table-borderless">
+              <tbody>
+                <tr>
+                  <td>Test reference:</td>
+                  <td><%= @admin_covid_test.payment_code %></td>
+                </tr>
+                <tr>
+                  <td>Type of sample:</td>
+                  <td><%= @admin_covid_test.type_prelevement %></td>
+                </tr>
+                <tr>
+                  <td>Expiration date:</td>
+                  <td><%= @admin_covid_test.expire_at&.strftime("%d/%m/%Y") %></td>
+                </tr>
+                <tr>
+                  <td><%= image_tag rails_blob_url(@admin_covid_test.payment_qr_code), width: 250, class:"qr_code"%></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td width="50%">
+            <table class="table-borderless" style="border:0">
+              <tbody>
+                <tr>
+                  <td>Flight number:</td>
+                  <td><%= @admin_covid_test.travel.flight  %></td>
+                </tr>
+                <tr>
+                  <td>Destination:</td>
+                  <td><%= @admin_covid_test.travel.from_country.name %> - <%= @admin_covid_test.travel.destination_country.name %></td>
+                </tr>
+                <tr>
+                  <td>Date of departure:</td>
+                  <td><%= @admin_covid_test.travel.departure_date&.strftime("%d/%m/%Y") %></td>
+                </tr>
+                <tr>
+                  <td>Date of arrival:</td>
+                  <td><%= @admin_covid_test.travel.arrival_date&.strftime("%d/%m/%Y") %></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

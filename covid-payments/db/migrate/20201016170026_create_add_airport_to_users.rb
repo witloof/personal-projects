@@ -1,0 +1,5 @@
+class CreateAddAirportToUsers < ActiveRecord::Migration[6.0]
+  def change
+    add_column :users, :airport_id, :integer, null: true
+  end
+end

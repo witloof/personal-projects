@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="d-flex flex-row justify-content-between mb-4">
+    <h4>Docteurs</h4>
+    <%= link_to new_admin_doctor_path do %>
+      Nouveau docteur
+    <% end %>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>E-mail</th>
+        <th>Centre</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_doctors.each do |admin_doctor| %>
+        <tr>
+          <td><%= admin_doctor.user.first_name %></td>
+          <td><%= admin_doctor.user.last_name %></td>
+          <td><%= admin_doctor.user.email %></td>
+          <td><%= admin_doctor.centre %></td>
+          <td><%= link_to 'Voir', [:admin, admin_doctor] %></td>
+          <td><%= link_to 'Modifier', edit_admin_doctor_path(admin_doctor) %></td>
+          <td><%= link_to 'Supprimer', [:admin, admin_doctor], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @admin_doctors %>
+</div>

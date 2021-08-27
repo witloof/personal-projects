@@ -1,0 +1,65 @@
+<%= form_with(model: [:admin, admin_doctor], local: true) do |form| %>
+  <% if admin_doctor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_doctor.errors.count, "error") %> prohibited this admin_doctor from being saved:</h2>
+
+      <ul>
+        <% admin_doctor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <%= form.label "Numero", for: :number %>
+      <%= form.text_field :number, class:"form-control" %>
+    </div>
+    <div class="col-md-6 form-group">
+      <%= form.label "Centre", for: :centre %>
+      <%= form.text_field :centre, class:"form-control" %>
+    </div>
+     <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label "Signature", for: :signature %>
+          <%= form.file_field :signature, class: "form-control" %>
+          <p class="text-warning">*Charger une photo de la signature du personnel de santé</p>
+        </div>
+      </div>
+     <%= form.fields_for :user do |u| %>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= u.label "Prénom", for: :first_name %>
+          <%= u.text_field :first_name, class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= u.label "Nom", for: :last_name %>
+          <%= u.text_field :last_name, class:"form-control"  %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= u.label "Email", for: :email %>
+          <%= u.text_field :email, class:"form-control"  %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= u.label "Téléphone", for: :phone_number %>
+          <%= u.text_field :phone_number, class:"form-control"  %>
+        </div>
+      </div>
+       <div class="col-md-6">
+        <div class="form-group">
+          <%= u.label "Aeroport", for: :airport_id %>
+          <%= u.select(:airport_id, airports_options, { :prompt => 'Choisir' }, { class:"form-control" })%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Enregistrer", class:"btn btn-primary" %>
+  </div>
+<% end %>

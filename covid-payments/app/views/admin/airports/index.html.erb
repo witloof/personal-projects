@@ -1,0 +1,28 @@
+<div class="container">
+   <div class="d-flex my-4 flex-row justify-content-between">
+      <h1>Aeroports</h1>
+      <%= link_to 'Nouvel aeroport', new_admin_airport_path %>
+    </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Pays</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_airports.each do |admin_airport| %>
+        <tr>
+          <td><%= admin_airport.name %></td>
+          <td><%= admin_airport.country.name %></td>
+          <td><%= link_to 'Voir', [:admin,admin_airport] %></td>
+          <td><%= link_to 'Modifier', edit_admin_airport_path(admin_airport) %></td>
+          <td><%= link_to 'Supprimer', [:admin,admin_airport], method: :delete, data: { confirm: 'Etes-vous sur?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

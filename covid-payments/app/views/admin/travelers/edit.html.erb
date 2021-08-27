@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="card mt-4">
+    <h5 class="card-header">Modifier Voyageur</h5>
+    <div class="card-body">
+      <%= render 'form', admin_traveler: @admin_traveler %>
+    </div>
+  </div>
+</div>
+<%= link_to 'Details', @admin_traveler %> |
+<%= link_to 'Liste', admin_travelers_path %>

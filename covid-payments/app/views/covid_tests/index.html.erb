@@ -1,0 +1,21 @@
+
+<div class="container text-gray traveler-form py-3">
+  <h1 class="text-gray text-center">Paiements</h1>
+  <div class="text-right">
+    <%= link_to '+ Nouveau test', new_covid_test_path%>
+  </div>
+  <ul class="list-group payments-list">
+    <% @covid_tests.each do |covid_test| %>
+      <li class="list-group-item border-0 pl-0 py-3 payment-item d-flex flex-row justify-content-between">
+          <span class="facture-icon"><%= fa_icon "file-text-o" %></span>
+          <span>
+           Paiement du <%= covid_test.created_at.strftime("%d/%m/%Y") %>
+          </span>
+          <%= link_to covid_test_path(covid_test) do  %>
+            <%= fa_icon "eye" %>
+          <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

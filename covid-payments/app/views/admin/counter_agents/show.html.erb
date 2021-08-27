@@ -1,0 +1,18 @@
+<div class="card mt-4">
+  <h5 class="card-header">Agent de guichet</h5>
+  <div class="card-body">
+    <% if @admin_counter_agent.user.avatar.attached? %>
+     <p><img class="admin-avatar img-thumbnail mr-1" src="<%= url_for(@admin_counter_agent.user.avatar) %>" /></p>
+   <% end %>
+   <p>Matricule: <%= @admin_counter_agent.number %></p>
+   <p>Prenom: <%= @admin_counter_agent.user.first_name %></p>
+   <p>Nom: <%= @admin_counter_agent.user.last_name %></p>
+   <p>Email: <%= @admin_counter_agent.user.email %></p>
+   <p>Telephone: <%= @admin_counter_agent.user.phone_number %></p>
+   <p>Pays: <%= @admin_counter_agent.country&.name %></p>
+   <p>Aeroport: <%= @admin_counter_agent.user.airport&.name %></p>
+   <p>Centre: <%= @admin_counter_agent.centre %></p>
+   <p>Ajoute le: <%= @admin_counter_agent.created_at.strftime("%d/%m/%Y %H:%m:%S") %></p>
+   
+  </div>
+</div>

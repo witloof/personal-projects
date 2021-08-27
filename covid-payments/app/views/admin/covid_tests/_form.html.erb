@@ -1,0 +1,31 @@
+<%= form_with(model: [:admin, admin_covid_test], local: true) do |form| %>
+  <div class="row">
+    <%= form.fields_for :travel do |builder| %>
+      <%= render "travel_fields", form: builder, admin_covid_test: admin_covid_test%>
+    <% end %>
+    <div class="col-md-6">
+      <% @payment_types.each do |payment_type| %>
+        <label class="checkbox-primary flight-check border-bottom py-3 mt-2">
+          <%= form.radio_button :payment_type_id, payment_type.id %>
+          <strong><img class="plane-icon mr-1" src="<%= url_for(payment_type.logo || '') %>" /><%= payment_type.name %></strong>
+        </label>
+      <% end %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label "Montant à payer", for: :amount %><span class="text-danger"> * </span><%= admin_covid_test.currency %><br>
+      <%= form.text_field :amount, class:"form-control" %>
+      <span class="error"><%= admin_covid_test.errors.messages[:amount].join(', ') if admin_covid_test.errors.any? %></span>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label "Devise", for: :currency %><span class="text-danger"> * </span><br>
+      <%= form.select :currency, [['XAF', 'XAF'],['XOF', 'XOF']], {prompt: "Choisir"}, {class:'form-control'}  %>
+      <span class="error"><%= admin_covid_test.errors.messages[:amount].join(', ') if admin_covid_test.errors.any? %></span>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="ml-2 col-md-2 mt-4 pb-4">
+      <%= form.submit "Enregistrer", class: "btn btn-rounded btn-primary" %>
+    </div>
+  </div>
+<% end %>

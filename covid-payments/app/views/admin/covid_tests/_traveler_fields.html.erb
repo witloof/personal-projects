@@ -1,0 +1,13 @@
+<%= form.fields_for :user do |builder| %>
+    <%= render "user_fields", f: builder %>
+<% end %>
+<div class="row">
+  <div class="form-group col-md-6">
+    <%= form.label 'Pays de résidence', for: :residence_country_iso_code %>
+    <%= form.select(:residence_country_iso_code, countries_options, { :prompt => 'Choisir' }, { class:"form-control" })%>
+  </div>
+  <div class="form-group col-md-6">
+    <%= form.label 'Passeport', for: :passport_numb %>
+    <%= form.text_field :passport_number, { class:"form-control" }  %>
+  </div>
+</div>

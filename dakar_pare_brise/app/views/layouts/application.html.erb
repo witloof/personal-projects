@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <title><%= page_title(app:"Dakar pare-brise") %></title>
+    <%= csrf_meta_tags %>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DAKAR PARE-BRISE est un Réseau de professionnels spécialisés dans la réparation et le remplacement de tous les vitrages automobiles. " />
+    <meta name="keywords" content="pare-brise dakar sénégal vitrage pare brise senegal voiture " />
+    <meta name="author" content="Dakar pare-brise" />
+
+    <link rel="icon" type="image/png" href="<%= image_url('favicon-32x32.png') %>" sizes="32x32" />
+    <link rel="icon" type="image/png" href="<%= image_url('favicon-16x16.png') %>" sizes="16x16" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="Dakar pare-brise" />
+    <meta name="twitter:image" content="/images/logo_dk_pb.png" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if ENV['ENV'] == 'production' %>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110178477-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110178477-1');
+      </script>
+      <% end %>
+  </head>
+
+  <body>
+    <%= render partial: "layouts/header" %>
+    <div id="fh5co-main">
+      <%= yield %>
+    </div>
+    <%= render partial: "layouts/footer" %>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<div id="appointmentPage" class="container bg-white">
+	<h3 class="">Prenez un rendez-vous en ligne en quelques minutes.</h3>
+	<div class="row btm-bordered" id="fh5co-steps">
+		<div onclick="next(1)" class="col-md-4 col-sm-4 fh5co-feature ">
+			<div class="step-icon" id="step-icon-1">
+  			<span>1</span> Dommage
+			</div>
+		</div>
+    <div onclick="next(2)" class="col-md-4 col-sm-4  fh5co-feature">
+			<div class="step-icon" id="step-icon-2">
+  			<span>2</span> Véhicule
+			</div>
+		</div>
+    <div onclick="next(3)" class="col-md-4 col-sm-4 fh5co-feature ">
+			<div class="step-icon" id="step-icon-3">
+  			<span>3</span> Informations
+			</div>
+		</div>
+  </div>
+		<%= render partial: "appointments/form" %>
+</div>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Marques</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @marques.each do |marque| %>
+      <tr>
+        <td><%= link_to 'Show', marque %></td>
+        <td><%= link_to 'Edit', edit_marque_path(marque) %></td>
+        <td><%= link_to 'Destroy', marque, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Marque', new_marque_path %>

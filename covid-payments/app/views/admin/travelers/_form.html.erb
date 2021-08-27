@@ -1,0 +1,78 @@
+<%= form_with(model: [:admin, admin_traveler], local: true, validate: true) do |form| %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label 'Sexe', for: :sexe %><span class="text-danger"> *</span><br>
+      <div class="d-flex">
+        <div class="form-check">
+          <%= form.radio_button :sexe, :homme, class:"form-check-input"  %> 
+          <label class="form-check-label" for="covid_test_travel_attributes_traveler_user_sexe_homme"> Homme</label>
+        </div>
+        <div class="form-check ml-4">
+          <%= form.radio_button :sexe, :femme, class:"form-check-input"  %>
+          <label class="form-check-label" for="covid_test_travel_attributes_traveler_user_sexe_femme">Femme</label>
+        </div>
+      </div>
+      <span class="error"><%= admin_traveler.errors.messages[:sexe].join(', ') if admin_traveler.errors.any? %></span>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label 'Date de naissance', for: :birthday %><br>
+      <div class="date-select">
+        <%= form.date_select :birthday, {:start_year => Time.now.year, prompt: true, end_year: 95.years.ago.year}, {class:"form-control" }%>
+        <span class="error"><%= admin_traveler.errors.messages[:birthday].join(', ') if admin_traveler.errors.any? %></span>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label 'Prénom', for: :first_name %>
+      <%= form.text_field :first_name, class: "form-control" %>
+      <span class="error"><%= admin_traveler.errors.messages[:first_name].join(', ') if admin_traveler.errors.any? %></span>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label 'Nom', for: :last_name %>
+      <%= form.text_field :last_name, class: "form-control"  %>
+      <span class="error">
+      <%= admin_traveler.errors.messages[:last_name].join(', ') if admin_traveler.errors.any? %></span>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label 'Email', for: :email %>
+      <%= form.text_field :email, class: "form-control"  %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label 'Numéro de téléphone', for: :phone_number %><span class="text-danger"> *</span><br>
+      <%= form.text_field :phone_number, class: "form-control phonenumber-intl" %>
+      <%= form.hidden_field :phone_country_code, value: admin_traveler.phone_country_code || 'cg' , id:'phone_country_code'%>
+      <span class="error"><%= admin_traveler.errors.messages[:phone_number].join(', ') if admin_traveler.errors.any? %></span>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label 'Pays de résidence', for: :residence_country_iso_code %><span class="text-danger"> *</span><br>
+      <%= form.select(:residence_country_iso_code, countries_options, { :prompt => 'Choisir' }, { class:"form-control" })%>
+      <span class="error"><%= admin_traveler.errors.messages[:residence_country_iso_code].join(', ') if admin_traveler.errors.any? %></span>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label "Type d'identification", for: :identification_type %><span class="text-danger"> *</span><br>
+      <%= form.select(:identification_type, identifications_options, {prompt: "Choisir"}, {class:'form-control'})%>
+      <span class="error"><%= admin_traveler.errors.messages[:identification_type].join(', ') if admin_traveler.errors.any? %></span>
+    </div>
+     <div class="form-group col-md-12">
+      <%= form.label "Numéro d'identification", for: :identification_type %><span class="text-danger"> *</span><br>
+      <%= form.text_field :identification_number, class: "form-control" %>
+      <span class="error"><%= admin_traveler.errors.messages[:identification_number].join(', ') if admin_traveler.errors.any? %></span>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label 'Date délivrance', for: :birthday %><br>
+      <div class="date-select">
+        <%= form.date_select :date_emission, {:start_year => Time.now.year, prompt: true, end_year: 95.years.ago.year}, {class:"form-control" }%>
+        <span class="error"><%= admin_traveler.errors.messages[:date_emission].join(', ') if admin_traveler.errors.any? %></span>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label "Date d'expiration", for: :birthday %><br>
+      <div class="date-select">
+        <%= form.date_select :date_expiration, {:start_year => Time.now.year, prompt: true, end_year: 95.years.ago.year}, {class:"form-control" }%>
+        <span class="error"><%= admin_traveler.errors.messages[:date_expiration].join(', ') if admin_traveler.errors.any? %></span>
+      </div>
+    </div>
+  </div>
+  <div class="actions mt-4">
+    <%= form.submit "Enregistrer", class:"btn btn-primary" %>
+  </div>
+<% end %>

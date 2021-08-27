@@ -1,0 +1,142 @@
+$primary: #ab160d;
+body {
+  background-color: #F1F4FA;
+}
+table {
+  background-color: white;
+}
+.header {
+  border-bottom: 1px solid #eeeeee;
+  background-color: white;
+  .header_wraper {
+    .header_title {
+      padding-bottom: 10px;
+      padding-top: 15px;
+      border-right: 1px solid #eeeeee;
+      h3 {
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: 600;
+        color: #6f6e6a;
+      }
+    }
+    .header_nav {
+      .upload_wrapper,
+      .user_wrapper {
+        padding-bottom: 10px;
+        padding-top: 15px;
+      }
+      .user_wrapper {
+        padding-right: 15px;
+      }
+    }
+  }
+}
+.dashbord-tile {
+  min-height: 150px;
+  border-radius: 5px;
+  text-align: center;
+  span.tile-title {
+    font-size: 0.8rem;
+    top: 15px;
+    position: relative;
+  }
+  h3.tile-value {
+    position: relative;
+    top: 30%;
+    text-align: center;
+  }
+}
+.red-tile {
+  background-color: $primary;
+  color: white;
+}
+.gray-tile {
+  background-color: #777575;
+  color: white;
+}
+.green-tile {
+  background-color: #559833;
+  color: white;
+}
+.blue-tile {
+  background-color: #0b66fb;
+  color: white;
+}
+.dark-tile {
+  background-color: #070607;
+  color: white;
+}
+.sidebar {
+  border-right: 1px solid #eeeeee;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  .admin_logo_wrapper {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #f1f1f1;
+    text-align: center;
+    width: 100%;
+    img {
+      max-width: 80px;
+    }
+  }
+  .nav-sidebar {
+    background-color: white;
+    height: 100%;
+    .nav-item {
+      font-size: 0.8rem;
+      font-weight: 100;
+    }
+  }
+  .btn-sidebar {
+    position: absolute;
+    bottom: 5px;
+    background-color: $primary;
+    width: 100%;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+.payement-icon {
+  max-width: 40px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.btn-rounded {
+  border-radius: 25px !important;
+}
+.payment-check {
+  display: inline;
+  input {
+    width: auto;
+  }
+}
+.iti--allow-dropdown {
+  width: 100%;
+}
+.admin-avatar {
+  max-height: 150px;
+}
+.nav-link {
+  color: black;
+  font-size: 0.9rem;
+}
+.field_with_errors {
+  color: #e1454d;
+  input,
+  select {
+    border: 1px solid #e1454d;
+  }
+}
+span.error {
+  color: #e1454d;
+}
+.dark-link {
+  text-decoration: none;
+  font-weight: bold;
+}

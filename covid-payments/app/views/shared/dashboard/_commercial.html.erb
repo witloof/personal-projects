@@ -1,0 +1,17 @@
+<div class="container pt-4">
+  <h5 class="text-primary">Tableau de bord</h5>
+  <div class="d-flex flex-row justify-content-between mt-4">
+    <div class="col-md-6 p-3">
+      <div class="dashbord-tile red-tile">
+        <p class="tile-title pt-2">Voyageurs enregistrés</p>
+        <h3 class="tile-value mt-3"><%= current_commercial.enrolled_travelers %></h3>
+      </div>
+    </div>
+    <div class="col-md-6 p-3">
+      <div class="dashbord-tile gray-tile">
+        <p class="tile-title pt-2">Tests enregistrés</p>
+        <h3 class="tile-value mt-3"><%= current_commercial.covid_tests.count %></h3>
+      </div>
+    </div>
+  </div>
+</div>

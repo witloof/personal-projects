@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour, <%= @traveler.full_name %></h1>
+    <p>
+      Votre inscription a été validée.
+      Voici votre code: <%= @payment_code %>.<br>
+      Test COVID 19 CONGO: Paiement de <%= @traveler.full_name %>
+      Numéro <%= @payment_code %> passager du vol <%= @flight %> a été effectué avec succés ce  <%= @created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+    </p>
+    <p>Merci!</p>
+  </body>
+</html>

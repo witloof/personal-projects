@@ -1,0 +1,9 @@
+<div class="container traveler-form py-4">
+  <h1 class="text-gray text-center">Paiement</h1>
+  <% if @status == 'failed' %>
+    <%= render "shared/payment_status/failed" %>
+  <% elsif @status == 'cancel' %>
+    <%= render "shared/payment_status/cancel" %>
+  <% end %>
+  <%= render 'form', covid_test: @covid_test %>
+</div>

@@ -1,0 +1,44 @@
+<div class="form-group col-md-6">
+  <%= form.label "Pays de depart", for: :from_country_iso_code %><span class="text-danger"> *</span><br>
+  <%= form.select(:from_country_iso_code, countries_options, { :prompt => 'Choisir' }, { class:"form-control" })%>
+  <span class="error"><%= admin_covid_test.errors.messages[:"travel.from_country_iso_code"].join(', ') if admin_covid_test.errors.any? %></span>
+</div>
+
+<div class="form-group col-md-6">
+  <%= form.label "Pays de destination", for: :destination_country_iso_code %><span class="text-danger"> *</span><br>
+  <%= form.select(:destination_country_iso_code, countries_options,{ :prompt => 'Choisir' }, { class:"form-control" })%>
+  <span class="error"><%= admin_covid_test.errors.messages[:"travel.destination_country_iso_code"].join(', ') if admin_covid_test.errors.any? %></span>
+</div>
+
+<div class="form-group col-md-6">
+  <%= form.label 'Date de départ', for: :departure_date %><br>
+  <div class="date-select">
+    <%= form.date_select :departure_date, {  }, { class:"form-control" }%>
+  </div>
+  <span class="error"><%= admin_covid_test.errors.messages[:"travel.departure_date"].join(', ') if admin_covid_test.errors.any? %></span>
+</div>
+<div class="form-group col-md-6">
+  <%= form.label "Date d'arrivée", for: :arrival_date %><br>
+  <div class="date-select">
+    <%= form.date_select :arrival_date, {  }, { class:"form-control" }%>
+  </div>
+  <span class="error"><%= admin_covid_test.errors.messages[:"travel.arrival_date"].join(', ') if admin_covid_test.errors.any? %></span>
+</div>
+<div class="form-group col-md-6">
+  <%= form.label "Moyen de transport", for: :traveled_by %><br>
+  <%= form.select :traveled_by, traveled_bies_options, {prompt: "Choisir"}, {class:'form-control'}  %>
+  <span class="error"><%= admin_covid_test.errors.messages[:"travel.flight"].join(', ') if admin_covid_test.errors.any? %></span>
+</div>
+
+<div class="form-group col-md-6">
+  <%= form.label "Numéro de vol", for: :flight %><br>
+  <%= form.text_field :flight, class:"form-control" %>
+  <span class="error"><%= admin_covid_test.errors.messages[:"travel.flight"].join(', ') if admin_covid_test.errors.any? %></span>
+</div>
+
+<div class="form-group col-md-6">
+  <%= form.label "Compagnie",for: :company %><span class="text-danger"></span><br>
+  <%= form.select :company, companies_options, {prompt: "Choisir"}, {class:'form-control'} %>
+  <span class="error"><%= admin_covid_test.errors.messages[:"travel.company"].join(', ') if admin_covid_test.errors.any? %></span>
+</div>
+<%= form.hidden_field :traveler_id %>

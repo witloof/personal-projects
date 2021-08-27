@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card mt-4">
+    <h5 class="card-header">Nouveau Voyageur</h5>
+    <div class="card-body">
+      <p><strong>Sexe:</strong> <%= @admin_traveler.sexe %></p>
+      <p><strong>Prenom:</strong> <%= @admin_traveler.first_name %></p>
+      <p><strong>Nom:</strong> <%= @admin_traveler.last_name %></p>
+      <p><strong>Date de naissance:</strong> <%= @admin_traveler.birthday.strftime('%d/%m/%Y') %></p>
+      <p><strong>Pays de residence:</strong> <%= @admin_traveler.residence_country.name %></p>
+      <p><strong>Passeport:</strong> <%= @admin_traveler.passport_number %></p>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Ajouter un test', new_admin_covid_test_path(traveler_id:@admin_traveler.id), class:"btn btn-success" %> 
+    </div>
+  </div>
+</div>

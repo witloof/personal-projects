@@ -1,0 +1,30 @@
+
+<%= form_for @appointment, :html => {id:"form_appointment",autocomplete:"off"} do |f| %>
+<div class="row bg-grey">
+		<% if @appointment.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+				<ul>
+				<% @appointment.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div class="alert alert-danger hidden" id="errorsMessages">
+		</div>
+		<div id="step-1" class="step col-md-12">
+			<%= render partial:"appointments/dommage", locals:{f:f}%>
+		</div>
+		<div id="step-2" class="step col-md-12">
+			<%= render partial:"appointments/vehicule", locals:{f:f}%>
+		</div>
+		<div id="step-3" class="step col-md-12">
+			<%= render partial:"appointments/informations", locals:{f:f}%>
+		</div>
+		<div id="step-4" class="step col-md-12">
+			<%= render partial:"appointments/confirmation", locals:{f:f}%>
+		</div>
+	</div>
+<% end %>

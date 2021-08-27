@@ -1,0 +1,61 @@
+<div class="alert alert-secondary text-center" role="alert">
+  <h3 class="font-weight-bold"> Inscription a été enregistrée en attente de paiement.</h3>
+  <p class=" mt-4 text-center">Votre inscription pour le paiement du test COVID 19 est en attente de paiement vous trouverez ci-dessous les détails.<br>Vous procéderez au paiement au niveau du guichet.</p>
+</div>
+
+ <p class="mt-4">
+ <img class="facture-icon" src="<%= asset_path('icons/play-outline.svg') %>" /> 
+  <span class="font-weight-bold">Code de paiement:</span>
+   <span class="font-weight-bold payment-code"><%= covid_test.payment_code %></span>
+  </p>
+
+  <p class="recap-line">
+    <span class="font-weight-bold">Client:</span>
+    <%= covid_test.travel.traveler.full_name.titleize %>
+  </p>
+  <p class="recap-line">
+    <span class="font-weight-bold">Nº Téléphone:</span>
+    <%= covid_test.travel.traveler.phone_number %>
+  </p>
+
+  <p class="recap-line">
+    <span class="font-weight-bold">Vol:</span>
+    <%= covid_test.travel.flight %>
+  </p>
+  <p class="recap-line">
+    <span class="font-weight-bold">Date de départ:</span>
+    <%= covid_test.travel.departure_date.strftime("%d/%m/%Y") %>
+  </p>
+
+    <p class="recap-line">
+    <span class="font-weight-bold">Destination:</span>
+    <%= covid_test.travel.from_country.name %> - <%= covid_test.travel.destination_country.name %>
+  </p>
+
+  <p class="recap-line">
+    <span class="font-weight-bold">Nº Passeport:</span>
+    <%= covid_test.travel.traveler.passport_number %>
+  </p>
+  <p class="recap-line">
+    <span class="font-weight-bold">Montant à payer:</span>
+   <strong><%= number_to_currency(covid_test.amount, :unit => covid_test.currency, :precision => 0)  %></strong>
+  </p>
+  <div class="row">
+    <% if covid_test.payment_qr_code %>
+      <div class="col-md-6">
+       <span class="font-weight-bold">QR Code</span>
+        <p class="text-center qr_code_to_scan">
+        <img src="<%= url_for(covid_test.payment_qr_code) %>" />
+        </p>
+      </div>
+    <% end %>
+    <% if covid_test.barcode %>
+      <div class="col-md-6">
+       <span class="font-weight-bold">Code barre</span>
+        <p class="text-center">
+        <img src="<%= url_for(covid_test.barcode) %>" />
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

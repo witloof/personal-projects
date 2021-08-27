@@ -1,0 +1,11 @@
+<% @categories.each do |item| %>
+	<div class="dkp-elements-holder-item dkp-width-1-4 dkp-horizontal-alignment-left" style="background-image:url(<%= item.image %>);-webkit-transition-delay: 0ms;">
+		<a href="<%= category_path(item.slug_name)%>">
+		  <div class="dkp-elements-holder-item-inner">
+		  	<div class="dkp-elements-holder-item-content">
+				  <h3 class="dkp-title"><span><%= item.name %></span></h3>
+			  </div>
+		  </div>
+		</a>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<div class="dkp-content">
+	<div class="dkp-content-inner">
+		<div class="dkp-title dkp-standard-type dkp-preload-background dkp-has-background dkp-has-parallax-background dkp-content-center-alignment dkp-title-in-grid dkp-animation-no dkp-title-image-not-responsive" style="background-image:url(<%= @category.image %>);" data-height="425" data-background-width=&quot;1920&quot;>
+			<div class="dkp-title-image">
+				<img src="<%= @category.image %>" alt="&nbsp;" /> 
+			</div>
+			<div class="dkp-title-holder">
+				<div class="dkp-container clearfix">
+					<div class="dkp-container-inner text-center">
+						<div class="dkp-title-subtitle-holder" style="">
+							<div class="dkp-title-subtitle-holder-inner">
+								<h1 style="color:#ffffff;">
+								<span><%= @category.name %></span></h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container page-content">
+	<div class="row">
+		<div class="col-md-2 col-xs-12 categ-list-select">
+			<ul>
+				<% @categories.each do |category| %>
+				  <li><%= link_to category.name, category_path(category.slug_name) %> (<%= category.products.count%>)</li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col-md-10 col-xs-12">
+			<div class="row">
+				<% if @category.products.size > 0 %>
+						<%= render partial: 'products/product', collection: @category.products %>
+				<% else %>
+				 <div class="col-md-12 col-xs-12 ">
+			      <div class="dkp-section-title-holder no-result  mt-2">
+			        <h2 class="dkp-section-title dkp-section-title-medium dkp-section-title-center">Aucun produit trouvé</h2>
+			      </div>
+			    </div>
+				<% end %>	
+			</div>	
+		</div>
+	</div>
+</div>

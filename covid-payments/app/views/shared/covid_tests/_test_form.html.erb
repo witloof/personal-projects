@@ -1,0 +1,20 @@
+<%= form_with(url:  proceed_to_test_admin_covid_test_path(admin_covid_test), local: true, method: :post) do |form| %>
+  
+  <div class="row">
+    <div class="form-group col-md-3">
+      <%= form.label 'Type de prélevement', for: :type_prelevement %>
+      <%= form.select(:type_prelevement, [['Naso-pharyngé', 'Naso-pharyngé '], ['Oro-pharyngé', 'Oro-pharyngé']], {prompt: "Choisir"}, {class:'form-control'})%>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label 'Lieu du test', for: :test_place %>
+      <%= form.text_field :test_place, value: 'DEL Biotechnologies', class:'form-control'%>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label 'CT', for: :ct %>
+       <%= form.text_field :ct, class:'form-control'%>
+    </div>
+    <div class="col-md-3 pt-4 form-group">
+      <%= form.submit "Proceder au test", class:"btn mt-1 btn-success btn-lg"%>
+    </div>
+  </div>
+<% end %>

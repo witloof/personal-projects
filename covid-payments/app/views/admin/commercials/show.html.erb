@@ -1,0 +1,16 @@
+<div class="card mt-4">
+  <h5 class="card-header">Hôtesse</h5>
+  <div class="card-body">
+    <% if @admin_commercial.user.avatar.attached? %>
+     <p><img class="admin-avatar img-thumbnail mr-1" src="<%= url_for(@admin_commercial.user.avatar) %>" /></p>
+   <% end %>
+   <p>Matricule: <%= @admin_commercial.number %></p>
+   <p>Prenom: <%= @admin_commercial.user.first_name %></p>
+   <p>Nom: <%= @admin_commercial.user.last_name %></p>
+   <p>Email: <%= @admin_commercial.user.email %></p>
+   <p>Telephone: <%= @admin_commercial.user.phone_number %></p>
+   <p>Aeroport: <%= @admin_commercial.user.airport&.name %></p>
+   <p>Ajoute le: <%= @admin_commercial.created_at.strftime("%d/%m/%Y %H:%m:%S") %></p>
+   
+  </div>
+</div>

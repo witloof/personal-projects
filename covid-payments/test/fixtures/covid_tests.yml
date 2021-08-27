@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  travel: one
+  payment_type: one
+  payed: false
+  result: 1
+  amount: 1
+  currency: MyString
+  counter_agent: one
+  result_date: 2020-10-11 02:43:51
+
+two:
+  travel: two
+  payment_type: two
+  payed: false
+  result: 1
+  amount: 1
+  currency: MyString
+  counter_agent: two
+  result_date: 2020-10-11 02:43:51

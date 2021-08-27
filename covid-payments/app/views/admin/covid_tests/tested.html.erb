@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="d-flex flex-row justify-content-between mb-4">
+    <h4>Passagers testés</h4>
+  </div>
+  <%= form_tag(admin_covid_tests_path, method: :get, class: "inline-form search_form") do %>
+    <div class="row py-4 mb-4">
+      <div class="col-md-9">
+        <%= text_field_tag :payment_code, "",  placeholder: "Entrer un code de paiement", class:"form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= submit_tag 'Trouver', class: "btn btn-primary btn-rounded" %>
+      </div>
+    </div>
+  <% end %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Voyageur</th>
+        <th>Code</th>
+        <th>Départ</th>
+        <th>Vol</th>
+        <th>Montant</th>
+        <th>Date du test</th>
+        <th>Laboratin</th>
+        <th>Rapport</th>
+        <th>Résultat</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_covid_tests.each do |admin_covid_test| %>
+        <tr>
+          <td><%= admin_covid_test.travel.traveler.full_name %></td>
+          <td><%= admin_covid_test.payment_code %></td>
+          <td><%= admin_covid_test.travel.from_country.name%></td>
+          <td><%= admin_covid_test.travel.flight %></td>
+          <td><%= number_to_currency(admin_covid_test.amount, :unit => admin_covid_test.currency, :precision => 0) %></td>
+          <td><%= admin_covid_test.tested_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
+           <td><%= admin_covid_test.doctor&.user&.full_name %></td>
+          <td class="text-center">
+            <% if admin_covid_test.result.nil? %>
+              --
+            <% else %>
+              <%= link_to test_report_admin_covid_test_url(admin_covid_test, format: :pdf, lang: :fr), { target: "_blank" } do %>
+                <%= fa_icon "file-text"%>
+                <span class="mb-0 text-12">FR</span>
+              <% end %>
+              <%= link_to test_report_admin_covid_test_url(admin_covid_test, format: :pdf, lang: :en), { target: "_blank", class:"ml-2" } do %>
+                <%= fa_icon "file-text"%>
+                <span class="mb-0 text-12">EN</span>
+              <% end %>
+            <% end %>
+          </td>
+            <td class="text-center d-flex">
+              <% if admin_covid_test.result == 'negative' %>
+                <span class="font-weight-bold text-danger">Positif</span>  <span class="px-1">|</span>  
+                <%= link_to "Test Négatif", change_state_admin_covid_test_url(admin_covid_test, result:'negative'), method: :post, data: { confirm: 'Etes-vous sûr de ce résultat Négatif?' }, class: 'btn btn-sm btn-outline-secondary'  %>
+              <% elsif admin_covid_test.result == 'positive' %>
+                <span class="font-weight-bold text-success">Négatif</span>  <span class="px-1">|</span>  
+                <%= link_to "Test Positif", change_state_admin_covid_test_url(admin_covid_test,result:'positive'), method: :post, data: { confirm: 'Etes-vous sûr de ce résultat Positif?' }, class: 'btn btn-sm btn-secondary'  %>
+              <% else %> 
+                <%= link_to "Test Négatif", change_state_admin_covid_test_url(admin_covid_test,result:'negative'), method: :post, data: { confirm: 'Etes-vous sûr de ce résultat Négatif?' }, class: 'btn btn-sm btn-outline-secondary'  %>  <span class="px-1">|</span>  
+                <%= link_to "Test Positif", change_state_admin_covid_test_url(admin_covid_test,result:'positive'), method: :post, data: { confirm: 'Etes-vous sûr de ce résultat Positif?' }, class: 'btn btn-secondary btn-sm' %>
+              <% end %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

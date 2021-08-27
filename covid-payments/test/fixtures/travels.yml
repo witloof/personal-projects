@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  traveler: one
+  from_country_iso_code: MyString
+  destination_country_iso_code: MyString
+  departure_date: 2020-10-10
+  arrival_date: 2020-10-10
+  flight: MyString
+  company: MyString
+
+two:
+  traveler: two
+  from_country_iso_code: MyString
+  destination_country_iso_code: MyString
+  departure_date: 2020-10-10
+  arrival_date: 2020-10-10
+  flight: MyString
+  company: MyString

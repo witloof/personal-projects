@@ -1,0 +1,29 @@
+<div class="container" id="spare-container">
+	<div class="row">
+		<div class="col-md-6 prim-image-container">
+			<img src="<%= @product.primary_image %>">
+		</div>
+		<div class="col-md-6">
+			<h1><%= @product.title %></h1>
+			<h5><%= link_to @product.category.name, category_path(@product.category.slug_name) %></h5>
+			<h4 class="dkp-card-price"><%= @product.price %> Fcfa</h4>
+			<p><%= @product.description %></p>
+		</div>
+	</div>
+</div>
+<div class="dkp_column dkp_column_container">
+  <div class="row">
+    <div class="col-md-12 col-xs-12"> 
+      <div class="dkp-section-title-holder">
+        <h2 class="dkp-section-title dkp-section-title-medium dkp-section-title-center">Autres categories ...</h2>
+      </div>
+    </div>
+  </div>
+  <div class="column-inner">
+    <div class="dkp-wrapper">
+      <div class="dkp-elements-holder">
+        <%= render "home/top_categories" %>
+      </div>
+    </div>
+  </div>
+</div>

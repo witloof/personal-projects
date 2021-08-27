@@ -1,0 +1,31 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <div class="d-flex flex-row justify-content-between mb-4">
+    <h4>Methodes de paiement</h4>
+    <%= link_to new_admin_payment_type_path do %>
+      Nouvelle méthode de paiement
+    <% end %>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Logo</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_payment_types.each do |admin_payment_type| %>
+        <tr>
+          <td><%= admin_payment_type.name %></td>
+          <td><img class="payement-icon mr-1" src="<%= url_for(admin_payment_type.logo) %>" /></td>
+          <td><%= link_to 'Voir', [:admin, admin_payment_type] %></td>
+          <td><%= link_to 'Modifier', edit_admin_payment_type_path(admin_payment_type) %></td>
+          <td><%= link_to 'Supprimer', [:admin, admin_payment_type], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

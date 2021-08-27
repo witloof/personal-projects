@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Modifier test COVID 19</h5>
+    <div class="card-body">
+      <div class="flex-row">
+        <span class="mr-2">Code Paiement: </span>
+        <strong>
+          <%= @admin_covid_test.payment_code %>
+        </strong>
+      </div>
+      <%= render 'form', admin_covid_test: @admin_covid_test %>
+    </div>
+  </div>
+</div>

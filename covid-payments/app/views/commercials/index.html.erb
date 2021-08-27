@@ -1,0 +1,30 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Commercials</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>User</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @commercials.each do |commercial| %>
+        <tr>
+          <td><%= commercial.number %></td>
+          <td><%= commercial.user_id %></td>
+          <td><%= link_to 'Voir', commercial %></td>
+          <td><%= link_to 'Modifier', edit_commercial_path(commercial) %></td>
+          <td><%= link_to 'Supprimer', commercial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>
+  <%= link_to 'New Commercial', new_commercial_path %>

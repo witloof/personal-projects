@@ -1,0 +1,17 @@
+<div class="container pt-4">
+  <h5 class="text-primary">Tableau de bord</h5>
+  <div class="d-flex flex-row justify-content-between mt-4">
+    <div class="col-md-6 p-3">
+      <div class="dashbord-tile red-tile">
+        <p class="tile-title pt-2">Paiements du jour</p>
+        <h3 class="tile-value mt-3"><%= current_counter_agent.payment_by_day.count %></h3>
+      </div>
+    </div>
+    <div class="col-md-6 p-3">
+      <div class="dashbord-tile gray-tile">
+        <p class="tile-title pt-2">Total paiements</p>
+        <h3 class="tile-value mt-3"><%= number_to_currency(current_counter_agent.payment_by_day.sum(:amount), :unit => current_user.airport&.country&.currency, :precision => 0) %></h3>
+      </div>
+    </div>
+  </div>
+</div>

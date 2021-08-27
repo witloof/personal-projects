@@ -1,0 +1,57 @@
+<%= form_with(model: @traveler, local: true, validate: true) do |form| %>
+  <div class="form-group">
+    <%= form.label 'Prénom', for: :first_name %> <span class="text-danger"> *</span><br>
+    <%= form.text_field :first_name, class:"form-control" %>
+    <span class="error"><%= @traveler.errors.messages[:first_name].join(', ') if @traveler.errors.any? %></span>
+  </div>
+  <div class="form-group">
+    <%= form.label 'Nom', for: :last_name %><span class="text-danger"> *</span><br>
+    <%= form.text_field :last_name, class:"form-control" %>
+    <span class="error"><%= @traveler.errors.messages[:last_name].join(', ') if @traveler.errors.any? %></span>
+  </div>
+  <div class="form-group">
+    <%= form.label 'Numéro de téléphone', for: :phone_number %> <span class="text-danger"> *</span><br>
+    <%= form.text_field :phone_number, class:"form-control phonenumber-intl" %>
+    <span class="error"><%= @traveler.errors.messages[:phone_number].join(', ') if @traveler.errors.any? %></span>
+  </div>
+  <div class="form-group">
+    <%= form.label 'Email', for: :email %> <span class="text-danger"> *</span><br>
+    <%= form.text_field :email, class:"form-control" %>
+    <span class="error"><%= @traveler.errors.messages[:email].join(', ') if @traveler.errors.any? %></span>
+  </div>
+  <%= form.hidden_field :phone_country_code, value: @traveler.phone_country_code || 'cg', id:'phone_country_code' %>
+  <div class="form-group">
+    <%= form.label 'Sexe', for: :sexe %><span class="text-danger"> *</span><br>
+    <div class="d-flex">
+      <div class="f-check">
+        <%= form.radio_button :sexe, :homme, class:"f-check-input"  %> 
+        <label class="f-check-label" for="traveler_sexe_homme"> Homme</label>
+      </div>
+      <div class="f-check ml-4">
+        <%= form.radio_button :sexe, :femme, class:"f-check-input"  %>
+        <label class="f-check-label" for="traveler_sexe_femme">Femme</label>
+      </div>
+    </div>
+    <span class="error"><%= @traveler.errors.messages[:sexe].join(', ') if @traveler.errors.any? %></span>
+  </div>
+  <div class="form-group">
+    <%= form.label 'Pays de résidence', for: :residence_country_iso_code %><span class="text-danger"> *</span><br>
+    <%= form.select(:residence_country_iso_code, countries_options, {prompt: "Choisir"}, {class:'form-control'})%>
+    <span class="error"><%= @traveler.errors.messages[:residence_country_iso_code].join(', ') if @traveler.errors.any? %></span>
+  </div>
+  <div class="form-group">
+    <%= form.label 'Passeport', for: :passport_number %><span class="text-danger"> *</span><br>
+    <%= form.text_field :passport_number, class: "form-control" %>
+    <span class="error"><%= @traveler.errors.messages[:passport_number].join(', ') if @traveler.errors.any? %></span>
+  </div>
+  <div class="form-group col-md-6">
+    <%= form.label 'Date de naissance', for: :birthday %><span class="text-danger"> *</span><br>
+    <div class="date-select">
+      <%= form.date_select :birthday, {:start_year => Time.now.year, prompt: true, end_year: 95.years.ago.year}, {class:"form-control" }%>
+      <span class="error"><%= @traveler.errors.messages[:birthday].join(', ') if @traveler.errors.any? %></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= form.submit "Suivant", id:"submit_new_traveler", class:"btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-6 mt-4">
+    <div class="card">
+      <h5 class="card-header">INFORMATIONS PASSAGER</h5>
+      <div class="card-body">
+        <p><span class="font-weight-bold">Sexe </span>: <%= @admin_covid_test.travel.traveler.sexe %> </p>
+        <p><span class="font-weight-bold">Nom</span> : <%= @admin_covid_test.travel.traveler.last_name %></p>
+        <p><span class="font-weight-bold">Prénom</span> : <%= @admin_covid_test.travel.traveler.first_name %></p>
+        <p><span class="font-weight-bold">Télephone</span> : <%= @admin_covid_test.travel.traveler.phone_number %></p>
+        <p><span class="font-weight-bold">Date de naissace</span> : <%= @admin_covid_test.travel.traveler.birthday.strftime("%d/%m/%Y")%></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-4">
+    <div class="card">
+      <h5 class="card-header">INFORMATIONS PAIEMENT</h5>
+        <div class="card-body">
+          <p><span class="font-weight-bold">Code de paiement</span> : <%= @admin_covid_test.travel.traveler.passport_number%></p>
+           <p>
+          <p><span class="font-weight-bold">Vol</span> : <%= @admin_covid_test.travel.flight%></p>
+          <p><span class="font-weight-bold">Destination</span> : <%= @admin_covid_test.travel.from_country.name%> - <%= @admin_covid_test.travel.destination_country.name%></p>
+          <p><span class="font-weight-bold">Date de depart</span> : <%= @admin_covid_test.travel.departure_date.strftime("%d/%m/%Y")%></p>
+          <% if @admin_covid_test.payed %>
+          <span class="font-weight-bold">Montant payé</span> :
+          <% else %>
+          <span class="font-weight-bold">Montant à payer</span> :
+            <% end%> <%= number_to_currency(@admin_covid_test.amount, :unit => @admin_covid_test.currency, :precision => 0) %></p>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-4">
+    <div class="card">
+      <h5 class="card-header">INFORMATIONS SUR LE TEST</h5>
+      <div class="card-body">
+          <p><span class="font-weight-bold">Etat paiement</span> :     
+          <% if !@admin_covid_test.payed %>
+            <%= link_to 'Payer', validate_payment_admin_covid_test_path(@admin_covid_test), method: :put, data: { confirm: 'Vous allez valider le paiement?' }, class:"btn btn-success mt-4 btn-lg" %>
+          <% else %>
+            <span class="badge badge-pill p-2 badge-success">Payé</span>
+          <% end %>
+        </p>
+         <p><span class="font-weight-bold">Lieu</span> :     
+          <%= @admin_covid_test.test_place %>
+        </p>
+         <p><span class="font-weight-bold">Type de Prélevement</span> :     
+          <%= @admin_covid_test.type_prelevement %>
+        </p>
+        <p><span class="font-weight-bold">CT</span> :     
+          <%= @admin_covid_test.ct %>
+        </p>
+        <%if current_user.doctor? %>
+          <% if @admin_covid_test.tested_at.nil? %>
+            <%= render "shared/covid_tests/test_form", admin_covid_test: @admin_covid_test %> 
+          <% else %>
+            <p><span class="font-weight-bold">Test effectué le</span> : <span class="text-success font-weight-bold"> <%= l(@admin_covid_test.tested_at) %></span>
+          </p>
+            <p><span class="font-weight-bold">Expire le</span> : <span class="text-danger font-weight-bold"> <%= l(@admin_covid_test.expire_at) %></span>
+          </p>
+            <%= link_to print_barcode_admin_covid_test_path(@admin_covid_test, format: :pdf), {target: "_blank", class:"btn btn-success border"} do %>
+              <%= fa_icon "barcode"%> Imprimer le code barre
+            <% end %> 
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

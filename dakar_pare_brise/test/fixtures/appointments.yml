@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicule: one
+  user: one
+  viitre_endomage: 1
+  domicile: false
+  adresse: MyString
+  to_repare_at: 2017-11-02
+  commentaire: MyText
+  confirmed_at: 2017-11-02
+
+two:
+  vehicule: two
+  user: two
+  viitre_endomage: 1
+  domicile: false
+  adresse: MyString
+  to_repare_at: 2017-11-02
+  commentaire: MyText
+  confirmed_at: 2017-11-02

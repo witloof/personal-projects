@@ -1,0 +1,39 @@
+.dkp-card-item {
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+
+  .dkp-card-holder {
+  	padding: 0 15px;
+    margin: 6px 0 10px;
+  	.dkp-card-inner {
+      .dkp-card-image {
+      	position: relative;
+      	img {
+      	 height: 238px;
+      	}
+      }
+  	}
+  	.dkp-card-content {
+  		padding: 10px;
+  		h3.dkp-card-title { 
+  			font-size: 16px; 
+  			text-transform: unset;
+  		}
+  	}
+  } 
+  #spare-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    .prim-image-container {
+      img {
+        max-width: 100%;
+        border: 1px #e1e1e1 solid; 
+      }
+    }  
+  }
+}

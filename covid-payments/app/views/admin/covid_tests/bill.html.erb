@@ -1,0 +1,126 @@
+<div class="container" >
+  <table style="width:100%; border: none;">
+    <tbody>
+      <tr>
+        <td>
+          <table style="width:95%">
+            <tbody><%= image_tag wicked_pdf_asset_base64('logo_congo.jpg'), width: 400 %>
+            </tbody>
+          </table>
+        </td>
+        <td>
+          <table style="width:100%;border: none;">
+            <tbody>
+              <tr>
+                <td>BON DE PRISE EN CHARGE DEPISTAGE COVID-19</td>
+              </tr>
+              <tr>
+                <td>Centre001 aeroport BZV</td>
+              </tr>
+              <tr><td><%= @admin_covid_test.created_at.strftime("%d/%m/%Y") %></td></tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="my-4"></div>
+  <table style="width:100%">
+    <tbody>
+      <tr>
+        <td>
+          <table style="width:95%; border: 1px solid #e1e1e1">
+            <thead style="background-color:#96FF33">
+              <tr><th colspan="2" class="py-2 font-weight-normal">INFORMATIONS PASSAGERS</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sexe : <%= @admin_covid_test.travel.traveler.sexe %></td>
+              </tr>
+              <tr>
+                <td>Nom : <%= @admin_covid_test.travel.traveler.last_name %></td>
+              </tr>
+              <tr>
+                <td>Prénom : <%= @admin_covid_test.travel.traveler.first_name %></td>
+              </tr>
+              <tr>
+                <td>Date de naissance : <%= @admin_covid_test.travel.traveler.birthday&.strftime("%d-%m-%Y") %></td>
+              </tr>
+            </body>
+          </table>
+        </td>
+        <td>
+          <table style="width:100%; border: 1px solid #e1e1e1">
+            <thead style="background-color:#96FF33">
+              <tr><th colspan="2" class="py-2 font-weight-normal">INFORMATIONS SUR LE TEST</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Type de test : COVID19-PCR</td>
+              </tr>
+              <tr>
+                <td>Type d’appareil : Easycov</td>
+              </tr>
+              <tr>
+                <td>Référence test : <%= @admin_covid_test.payment_code %></td>
+              </tr>
+              <tr>
+                <td>Code test :</td>
+              </tr>
+            </body>
+          </table>
+        </td>
+      </tr>
+     </tbody>   
+  </table>
+  <div class="my-4"></div>
+  <table style="width:100%; border: 1px solid #e1e1e1">
+    <thead style="background-color:#96FF33">
+      <tr><th colspan="2" class="py-2 font-weight-normal">SEJOUR</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Destination : <%= @admin_covid_test.travel.destination_country.name %></td>
+      </tr>
+      <tr>
+        <td>Date de départ : <%= @admin_covid_test.travel.departure_date.strftime("%d-%m-%Y") %> </td>
+      </tr>
+      <tr>
+        <td>Numéro de vol : <%= @admin_covid_test.travel.flight %></td>
+      </tr>
+    </body>
+  </table>
+  <div class="my-4"></div>
+  <table style="width:100%; border: 1px solid #e1e1e1">
+    <thead style="background-color:#96FF33">
+      <tr><th colspan="2" class="py-2 font-weight-normal">PAIEMENT</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>N° Facture : <%= @admin_covid_test.payment_code %></td>
+      </tr>
+      <tr>
+        <td>Etat : <%= @admin_covid_test.travel.payed ? 'Payé' : 'En attente' %></td>
+      </tr>
+      <tr>
+        <td>Montant : <%= number_to_currency(@admin_covid_test.amount, :unit => @admin_covid_test.currency, :precision => 0) %></td>
+      </tr>
+      <tr>
+        <td>Montant encaissé : <%= number_to_currency(@admin_covid_test.amount, :unit => @admin_covid_test.currency, :precision => 0) %></td>
+      </tr>
+    </body>
+  </table>
+  <div class="my-4"></div>
+  <table style="width:100%">
+    <tbody>
+      <tr>
+        <td>
+          <%= image_tag rails_blob_url(@admin_covid_test.payment_qr_code), width: 250, class:"qr_code"%>
+        </td>
+        <td>
+          <%= image_tag rails_blob_url(@admin_covid_test.barcode)%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<div>

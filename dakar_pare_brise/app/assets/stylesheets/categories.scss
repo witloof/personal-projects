@@ -1,0 +1,20 @@
+.categ-list-select {
+	ul {
+	  border: 1px solid #e1e1e1;
+	  list-style: none;
+	  padding: 10px;
+	  li {
+	    margin-bottom: 15px;
+			a {
+			  font-size: 16px;
+			  color: #000;
+			  font-weight: 500;
+			  text-decoration: underline;
+			  &:hover {
+			    color: #797474;
+			    background-color: transparent;
+			  }
+			}
+	  }
+	}
+}

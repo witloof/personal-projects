@@ -1,0 +1,42 @@
+<div class="fh5co-cards">
+<h3 class="qst-title">Quelle vitre est endommagée?</h3>
+<div class="row">
+  <div class="col-md-3 col-sm-6 animate-box fadeInUp animated dommage-box text-center">
+    <a class="fh5co-card domage-card" id="pare-brise">
+    <%= f.hidden_field :dommage, value:"" %>
+    <img src="<%= image_url('dommage_avant_1.jpg') %>"  class="img-responsive" />
+    <div class="fh5co-card-body">
+      <p class="p-size16">Pare-Brise</p>
+    </div>
+  </a>
+  </div>
+  <div class="col-md-3 col-sm-6 animate-box fadeInUp animated dommage-box text-center">
+    <a class="fh5co-card domage-card" id="lunette-arriere">
+    <img src="<%= image_url('dommage_2.jpg') %>"  class="img-responsive" />
+    <div class="fh5co-card-body">
+      <p class="p-size16">Lunette Arriére</p>
+    </div>
+  </a>
+  </div>
+  <div class="col-md-3 col-sm-6 animate-box fadeInUp animated dommage-box text-center">
+    <a class="fh5co-card domage-card" id="vitre-gauche">
+    <img src="<%= image_url('dommage_3.jpg') %>"  class="img-responsive" />
+    <div class="fh5co-card-body">
+      <p class="p-size16">Vitre latérale Gauche</p>
+    </div>
+  </a>
+  </div>
+
+  <div class="col-md-3 col-sm-6 animate-box fadeInUp animated dommage-box text-center">
+    <a class="fh5co-card domage-card" id="vitre-droite">
+    <img src="<%= image_url('dommage_3.jpg') %>"  class="img-responsive" />
+    <div class="fh5co-card-body">
+      <p class="p-size16">Vitre latérale Droite</p>
+    </div>
+  </a>
+  </div>
+</div>
+  <div class="actions-btn">
+  <a class="btn btn-success btn-lg pull-xs-right" onclick="next(2)">Continer <%=fa_icon "chevron-right"%></a>
+  </div>
+</div>

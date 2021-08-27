@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="d-flex flex-row justify-content-between mb-4">
+    <h4>Tests en attente de paiement</h4>
+  </div>
+  <%= form_tag(admin_covid_tests_path, method: :get, class: "inline-form search_form") do %>
+    <div class="row py-4 mb-4">
+      <div class="col-md-9">
+        <%= text_field_tag :payment_code, "",  placeholder: "Rechercher par code de paiement", class:"form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= submit_tag 'Trouver', class: "btn btn-primary btn-rounded" %>
+      </div>
+    </div>
+  <% end %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Voyageur</th>
+        <th>Code</th>
+        <th>Départ</th>
+        <th>Vol</th>
+        <th>Montant</th>
+        <th>Date</th>
+        <th>Etat</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_covid_tests.each do |admin_covid_test| %>
+        <tr>
+          <td><%= admin_covid_test.travel.traveler.full_name %></td>
+          <td><%= admin_covid_test.payment_code %></td>
+          <td><%= admin_covid_test.travel.from_country.name%></td>
+          <td><%= admin_covid_test.travel.flight %></td>
+          <td><%= number_to_currency(admin_covid_test.amount, :unit => admin_covid_test.currency, :precision => 0) %></td>
+          <td><%= admin_covid_test.created_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
+          <td>
+            <% if admin_covid_test.payed %>
+              <span class="badge badge-pill badge-success">Payé</span>
+            <% else %>
+              <span class="badge badge-pill badge-danger">En attente</span>
+            <% end %>
+          </td>
+          <td><%= link_to 'Payer', [:admin, admin_covid_test], class: "btn btn-primary btn-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

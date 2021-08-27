@@ -1,0 +1,80 @@
+.check-dommage{
+  width: 100%;
+  border: 2px solid #eaeaea !important;
+  background: transparent;
+  color: #2a2e37;
+  border-radius: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+#new_appointment{
+  background-color: #f7f7f7;
+}
+.qst-title{
+  font-weight: 700;
+  color: #5da323;
+}
+.actions-btn{
+  text-align: right;
+  width: 100%;
+}
+
+.step-icon.active, .step-icon:hover{
+  border-bottom: 3px solid #E13A2B;
+  color: #E13A2B;
+  cursor: pointer;
+}
+.step-icon{
+  font-weight: 500;
+  padding-left: 20px;
+  text-align: justify;
+  background: linear-gradient(to bottom, #efefef 0%,#ffffff 50%);
+  border: 1px solid #dadada;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.step-icon span{
+  font-size: 25px;
+  font-weight: 600;
+ }
+#fh5co-steps{
+  background-color: #fff;
+}
+
+.bg-white{
+  background-color: #fff;
+}
+.bg-grey{
+  background-color: #edf2fa;
+}
+.p-size16{
+  color: #4e5664 !important;
+  font-size: 16px;
+  font-family: Freight Sans,helvetica neue,helvetica,arial,lucida grande,sans-serif;
+  letter-spacing: .25px;
+}
+.fh5co-card{
+  cursor: pointer;
+  border: 10px solid #b3b3b3;
+}
+.step h3.heading{
+  margin-top: 1em;
+}
+.error-help{
+  display: none;
+  color: #a94442;
+}
+.has-error .error-help{
+  display: inline;
+}
+.rv-place{
+  padding: 15px 3px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.btn-return{
+  float: left;
+}

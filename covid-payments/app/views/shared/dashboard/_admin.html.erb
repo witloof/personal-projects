@@ -1,0 +1,60 @@
+<div class="container pt-4">
+  <h5 class="text-primary">Tableau de bord</h5>
+  <div class="d-flex flex-row row justify-content-between mt-4">
+    <div class="col-md-6 p-3">
+      <div class="dashbord-tile red-tile">
+        <p class="tile-title pt-2">Passagers par jour</p>
+        <h3 class="tile-value mt-3"><%= Traveler.from_today.count %></h3>
+      </div>
+    </div>
+    <div class="col-md-6 p-3">
+      <div class="dashbord-tile green-tile">
+        <p class="tile-title pt-2">Total paiement</p>
+        <h3 class="tile-value mt-3"><%= CovidTest.payed_today.count %></h3>
+        <h3 class="tile-value mt-3"><%= number_to_currency(CovidTest.payed_today.sum(:amount),  :unit => "XOF", :precision => 0) %></h3>
+      </div>
+    </div>
+    <div class="col-md-6 mt-4">
+      <h3 class="mb-4">Passagers enrollés aujourd'hui</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Matricule Hôtesse</th>
+            <th>Hôtesse</th>
+            <th>Passagers enrollés</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @enrolled_today.each do |enrolled_today| %>
+            <tr>
+              <td><%= enrolled_today.commercial.number %></td>
+              <td><%= enrolled_today.commercial.user.full_name %></td>
+              <td><%= link_to enrolled_today.count, admin_travelers_path(filter: true, date: Date.today, commercial: enrolled_today.commercial.id), class:"dark-link" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6 mt-4">
+      <h3 class="mb-4">Paiement effectués aujourd'hui</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Canal de  paiement</th>
+            <th>Nombre</th>
+            <th>Montant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @payment_types.each do |payment_type| %>
+            <tr>
+              <td><%= payment_type.name %></td>
+              <td><%= link_to payment_type.paid_today.count, admin_covid_tests_admin_covid_tests_path(filter: true, date: Date.today, payment_type: payment_type.id), class:"dark-link" %></td>
+              <td><%=  number_to_currency(payment_type.paid_today.sum(:amount),  :unit => "XOF", :precision => 0) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table> 
+    </div>
+  </div>
+</div>

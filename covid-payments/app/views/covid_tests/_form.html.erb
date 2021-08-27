@@ -1,0 +1,26 @@
+<%= form_with(model: covid_test, local: true) do |form| %>
+  <p>
+    Bonjour <strong><%= current_traveler.full_name.titleize %></strong> vous allez payer la somme de <strong><%= number_to_currency(@country.test_price, :unit => @country.currency, :precision => 0) %> </strong> pour le <br>
+    <strong>Test de COVID 19</strong>.
+  <p>
+  <p><span class="text-gray">MONTANT:</span> <span class="text-primary"><strong><%= number_to_currency(@country.test_price, :unit => @country.currency, :precision => 0) %></strong></span></p>
+  <h3>Voyage</h3>
+  <%= form.fields_for :travel do |builder| %>
+    <%= render "travel_fields", f: builder, covid_test: covid_test %>
+  <% end %>
+  <div class="form-group">
+    <h3>Mode de paiment</h3>
+    <% @payment_types.each do |payment_type| %>
+      <label class="checkbox-primary flight-check border-bottom py-3 mt-2">
+        <%= form.radio_button :payment_type_id, payment_type.id %>
+        <strong>
+         <%= payment_type.name %></strong>
+      </label>
+    <% end %>
+  </div>
+
+
+  <div class="col-md-12"  id="submit-test-btn" >
+    <%= form.submit "Valider", class:"btn btn-primary btn-block btn-lg"%>
+  </div>
+<% end %>

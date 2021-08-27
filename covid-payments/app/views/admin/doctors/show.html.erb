@@ -1,0 +1,17 @@
+<div class="card mt-4">
+  <h5 class="card-header">Personnel Medical</h5>
+  <div class="card-body">
+    <% if @admin_doctor.user.avatar.attached? %>
+     <p><img class="admin-avatar img-thumbnail mr-1" src="<%= url_for(@admin_doctor.user.avatar) %>" /></p>
+   <% end %>
+   <p><span class="font-weight-bold">Matricule:</span> <%= @admin_doctor.number %></p>
+   <p><span class="font-weight-bold">Prenom:</span>  <%= @admin_doctor.user.first_name %></p>
+   <p><span class="font-weight-bold">Nom:</span>  <%= @admin_doctor.user.last_name %></p>
+   <p><span class="font-weight-bold">Email:</span>  <%= @admin_doctor.user.email %></p>
+   <p><span class="font-weight-bold">Telephone:</span>  <%= @admin_doctor.user.phone_number %></p>
+   <p><span class="font-weight-bold">Aeroport:</span>  <%= @admin_doctor.user.airport&.name %></p>
+   <p><span class="font-weight-bold">Centre:</span>  <%= @admin_doctor.centre %></p>
+   <p><span class="font-weight-bold">Ajoute le:</span>  <%= @admin_doctor.created_at.strftime("%d/%m/%Y %H:%m:%S") %></p>
+   
+  </div>
+</div>

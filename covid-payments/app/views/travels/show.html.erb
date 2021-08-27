@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Traveler:</strong>
+  <%= @travel.traveler_id %>
+</p>
+
+<p>
+  <strong>From country iso code:</strong>
+  <%= @travel.from_country_iso_code %>
+</p>
+
+<p>
+  <strong>Destination country iso code:</strong>
+  <%= @travel.destination_country_iso_code %>
+</p>
+
+<p>
+  <strong>Departure date:</strong>
+  <%= @travel.departure_date %>
+</p>
+
+<p>
+  <strong>Arrival date:</strong>
+  <%= @travel.arrival_date %>
+</p>
+
+<p>
+  <strong>Flight:</strong>
+  <%= @travel.flight %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @travel.company %>
+</p>
+
+<%= link_to 'Edit', edit_travel_path(@travel) %> |
+<%= link_to 'Back', travels_path %>

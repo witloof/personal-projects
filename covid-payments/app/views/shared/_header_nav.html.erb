@@ -1,0 +1,33 @@
+<header class="header">
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <div class="mobile_log_wrapper text-center">
+        <%= link_to root_path, class:'navbar-brand' do %>
+        <img src="<%= asset_path('logo-03.svg') %>" alt="Placeholder image" class="img-fluid mobile_logo">
+        <% end %>
+      </div>
+      <%
+=begin%>
+ <div class="pt-3 pr-1">
+        <% if user_signed_in? %>
+          <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class:'btn btn-outline-primary btn-sm' %> </li>
+        <% else %>
+          <%= link_to "Connexion", new_user_session_path, class:'btn btn-outline-primary btn-sm' %> </li>
+        <% end %>
+      </div> 
+<%
+=end%>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <div class="current-traveler pt-3 pb-3">
+      <div class="container">
+          <%= fa_icon "user-circle-o" %> 
+          <span class="ml-1"><%= t("roles.#{current_user.role}")%> - <%= current_user.full_name.titleize %></span> 
+          <% if current_user.traveler?%>
+            - <span><%= current_traveler.residence_country.iso_code %></span>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</header>

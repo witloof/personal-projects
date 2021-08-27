@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour, <%= @covid_test.travel.traveler.full_name %></h1>
+    <p>
+      Votre test COVID-19 du <%= l(@covid_test.created_at) %> est <strong>négatif</strong>.
+      Ci-joint le rapport du test.
+    </p>
+    <p>Merci!</p>
+  </body>
+</html>

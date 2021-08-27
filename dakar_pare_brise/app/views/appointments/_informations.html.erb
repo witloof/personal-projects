@@ -1,0 +1,42 @@
+<h3 class="qst-title">Les informations pour vous contacter</h3>
+<%= f.fields_for :user do |u|%>
+<div id="prenomInput" class="form-group">
+  <label>Prénom *</label>
+  <%= u.text_field :prenom, class:"form-control"%>
+</div>
+<div id="nomInput" class="form-group">
+  <label>Nom *</label>
+  <%= u.text_field :nom, class:"form-control"%>
+</div>
+<div class="form-group">
+  <label>E-mail *</label>
+  <%= u.email_field :email, class:"form-control"%>
+</div>
+<div id="telephoneInput" class="form-group">
+  <label>Télépone *</label>
+  <%= u.text_field :telephone, class:"form-control"%>
+</div>
+<% end %>
+<div class="form-group row">
+  <label class="col-md-12">Lieu du rendez-vous</label>
+  <div class="col-md-6">
+    <div class="rv-place">
+      <%= f.radio_button :lieu, "Se rendre à notre point de réparation" %>
+      Vous allez venir chez nous.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="rv-place">
+      <%= f.radio_button :lieu, "Notre équipe se déplace chez vous" %>
+      Notre équipe se déplace chez vous gratuitement.
+    </div>
+  </div>
+</div>
+<div id="adresse_user" class="form-group">
+  <label>Adresse</label>
+  <%= f.text_field :adresse, class:"form-control"%>
+</div>
+<div class="actions-btn">
+  <a class="btn btn-default btn-return btn-lg" onclick="next(2)"><%=fa_icon "chevron-left"%> Retour</a>
+  <%= f.submit "Valider", class:"btn btn-success btn-lg pull-xs-right"%>
+</div>

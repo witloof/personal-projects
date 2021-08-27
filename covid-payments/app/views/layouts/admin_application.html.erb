@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CovidPayments</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag 'admin_application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'admin_application', 'data-turbolinks-track': 'reload' %>
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,600" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <%= render "shared/admin_header_nav.html" %>
+    <div class="row">
+      <div class="col-md-3 sidebar">
+        <%= render "shared/admin_sidebar"%>
+      </div>
+      <div class="col-md-9 pt-4">
+        <% if notice %>
+          <div class="container">
+            <div class="alert alert-success" role="alert">
+              <%= notice %>
+            </div>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

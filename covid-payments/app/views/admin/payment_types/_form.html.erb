@@ -1,0 +1,32 @@
+<%= form_with(model: [:admin, admin_payment_type], local: true) do |form| %>
+  <% if admin_payment_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_payment_type.errors.count, "error") %> prohibited this admin_payment_type from being saved:</h2>
+
+      <ul>
+        <% admin_payment_type.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label "Nom", for: :name %>
+        <%= form.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label "Logo", for: :logo %>
+        <%= form.file_field :logo, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 mt-4">
+      <%= form.submit "Enregistrer", class: "btn btn-rounded btn-primary" %>
+    </div>
+  </div>
+<% end %>

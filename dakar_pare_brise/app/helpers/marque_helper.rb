@@ -1,0 +1,2 @@
+module MarqueHelper
+end

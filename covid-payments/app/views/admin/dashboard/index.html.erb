@@ -1,0 +1,7 @@
+<% if @current_user.commercial? %>
+  <%= render "shared/dashboard/commercial" %>
+<% elsif @current_user.counter_agent? %>
+  <%= render "shared/dashboard/counter_agent" %>
+<% elsif @current_user.admin? %>
+  <%= render "shared/dashboard/admin" %>
+<% end %>

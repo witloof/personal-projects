@@ -1,0 +1,38 @@
+
+<header id="fh5co-header-section" role="header" class="btm-bordered" >
+  <% if flash[:notice] %>
+    <div class="alert alert-success text-center"><%= flash[:notice] %></div>
+  <% end %>
+  <div id="top-bar-infos" >
+    <div class="container">
+      <div class="row">
+        <ul class="col-md-6 list-inline">
+          <li>
+            Appelez nous (+221) 77 712 51 50 / (+221) 77 623 90 63
+          </li>
+        </ul>
+        <ul class="col-md-6 list-inline text-right">
+          <li>Retrouvez nous sur les réseaux sociaux </li>
+          <li><%= fa_icon 'whatsapp' %></li>
+          <li><%= fa_icon 'facebook' %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- <div id="fh5co-menu-logo"> -->
+      <!-- START #fh5co-logo -->
+      <h1 id="fh5co-logo" class="pull-left"><a href="<%= root_url%>"><img  style="max-width:255px" src="<%= image_url('logo_dk_pb.png') %>" alt="Dakar pare-brise"></a></h1>
+
+      <!-- START #fh5co-menu-wrap -->
+      <nav id="fh5co-menu-wrap" role="navigation">
+
+        <ul class="sf-menu" id="fh5co-primary-menu">
+          <li><a href="<%= new_appointment_url %>">Prendre rendez-vous</a></li>
+          <li><a href="<%=contact_url%>">Contact</a></li>
+
+        </ul>
+      </nav>
+    <!-- </div> -->
+  </div>
+</header>

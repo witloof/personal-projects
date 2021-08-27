@@ -1,0 +1,115 @@
+<div id="fh5co-hero" style="background-image: url(<%= image_url('slide_2.jpg') %>);">
+  <div class="container text-center">
+    <div class="fh5co-hero-wrap">
+      <div class="fh5co-hero-intro">
+        <h1 class="to-animate hero-animate-1 red-text">Pour changer votre vitrage</h1>
+        <p class="to-animate hero-animate-3"><a href="<%= new_appointment_url %>" id="rdv-button" class="btn btn-lg rv-btn">je prend rendez-vous <%= fa_icon "angle-double-right"%></a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End fh5co-arrow -->
+<div id="steps-details">
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <div class="dkp-section-title-holder mt-2">
+        <h2 class="dkp-section-title dkp-section-title-medium dkp-section-title-center">Comment ça marche</h2>
+      </div>
+    </div>
+  </div>
+  <div class="dkp-elements-holder">
+    <div class="dkp-elements-holder-item dkp-width-1-4  dkp-horizontal-alignment-center">
+      <div class="dkp-elements-holder-item-inner">
+        <div class="dkp-elements-holder-item-content opac-red" style="padding: 15.4% 6% 16% 6% !important;">
+          <div class="dkp-counter-holder dkp-counter-light dkp-counter-top">
+            <div class="dkp-counter-content">
+              <img class="etape-icon " src="<%= image_url('information-circular-thin-button-of-web.png')%>" />
+              <h3 class="dkp-counter-title"><span>Prenez rendez-vous.</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dkp-elements-holder-item dkp-width-1-4 dkp-horizontal-alignment-center">
+      <div class="dkp-elements-holder-item-inner">
+        <div class="dkp-elements-holder-item-content non-opac-red" style="padding: 15.4% 6% 16% 6% !important;">
+          <div class="dkp-counter-holder dkp-counter-light dkp-counter-top">
+            <div class="dkp-counter-content">
+              <img class="etape-icon " src="<%= image_url('phone-call.png')%>" />
+              <h3 class="dkp-counter-title"><span>Prenez rendez-vous.</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dkp-elements-holder-item dkp-width-1-4 dkp-horizontal-alignment-center">
+      <div class="dkp-elements-holder-item-inner">
+        <div class="dkp-elements-holder-item-content opac-red" style="padding: 15.4% 6% 16% 6% !important;">
+          <div class="dkp-counter-holder dkp-counter-light dkp-counter-top">
+            <div class="dkp-counter-content">
+              <img class="etape-icon " src="<%= image_url('like.png')%>" />
+              <h3 class="dkp-counter-title"><span>Nous remplaçons votre vitrage.</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dkp_column dkp_column_container">
+  <div class="row">
+    <div class="col-md-12 col-xs-12"> 
+      <div class="dkp-section-title-holder">
+        <h2 class="dkp-section-title dkp-section-title-medium dkp-section-title-center">piéces automobiles</h2>
+      </div>
+    </div>
+  </div>
+  <div class="column-inner">
+    <div class="dkp-wrapper">
+      <div class="dkp-elements-holder">
+        <%= render "top_categories" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mt-2">
+      <div class="dkp-section-title-holder">
+        <h2 class="dkp-section-title dkp-section-title-medium dkp-section-title-center">Nos experts à votre service</h2>
+      </div>
+    </div>
+    <div class="col-md-12 mb-2 ">
+      <div id="home-gallery" style="display:none;">
+        <% 8.times do |index| %>
+          <% index += 1 %>
+          <img alt='<%= "Preview Image #{index}" %>' src='<%= image_url("home-gallery/#{index}.jpg")%>' data-description='<%= "Preview Image Description #{index}" %>' data-image='<%= image_url("home-gallery/#{index}.jpg")%>'>
+        <% end %>
+      </div>
+    </div>  
+  </div>
+  <div id="qui-sommes-nous" class="container mt-2">
+    <div class="row">
+      <div class="col-md-12 col-xs-12"> 
+        <div class="dkp-section-title-holder">
+          <h2 class="dkp-section-title dkp-section-title-medium dkp-section-title-center">Qui sommes nous ?</h2>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <p>
+          <strong>DAKAR PARE-BRISE</strong> est un Réseau de professionnels spécialisés dans la réparation et le remplacement de tous les vitrages automobiles. 
+        </p>
+        <p>
+          Nos techniciens sont capables d’intervenir sur tous les types de véhicules : véhicules de tourisme, utilitaires, berline et break.
+        </p>
+        <p>
+          <a href="<%= new_appointment_url %>">Prenez gratuitement rendez-vous</a> ensuite nos techniciens vont vous contacter dans les plus brefs délais pour une intervention.
+        </p>
+        <p>
+          <strong>DAKAR PARE-BRISE</strong> offre à ses clients la possibilité de choisir le lieu de l'intervention. Pour toute intervention nous nous déplaçons gratuitement sur le lieu de travail du client ou à son domicile.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

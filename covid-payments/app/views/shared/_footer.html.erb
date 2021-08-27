@@ -1,0 +1,8 @@
+<footer>
+  <% if user_signed_in? %>
+    <div class="flex-row d-flex justify-content-between">
+      <%= link_to "Paiements",covid_tests_path, class:"paiement-btn flex-grow-1"%>
+      <%= link_to "Prélèvements",results_covid_tests_path, class:"prevelement-btn flex-grow-1"%>
+    </div>
+  <% end %>
+</footer>

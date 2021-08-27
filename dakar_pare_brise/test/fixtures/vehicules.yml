@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matricule: MyString
+  marque: one
+  model: one
+  serie: MyString
+  user: one
+  annee: MyString
+
+two:
+  matricule: MyString
+  marque: two
+  model: two
+  serie: MyString
+  user: two
+  annee: MyString

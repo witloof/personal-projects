@@ -1,0 +1,17 @@
+<div class="col-md-3 dk-card-item">
+	<div class="dkp-card-holder">
+		<div class="dkp-card-inner">
+			<div class="dkp-card-image">
+				<a href="<%= product_path(product.slug_title) %>">
+					<img src="<%= product.primary_image(:medium) %>">
+				</a>
+			</div>
+			<div class="dkp-card-content">
+				<a href="<%= product_path(product.slug_title) %>">
+					<h3 class="dkp-card-title"><span><%= product.title %></span></h3>
+					<h4 class="dkp-card-price"><%= product.price %> Fcfa</h4>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

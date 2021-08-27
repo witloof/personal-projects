@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour, <%= @user.full_name %></h1>
+    <p>
+      Votre paiment a été validé.
+      Voici votre code: <%= @payment_code %>.<br>
+      Ci-joint votre bon de paiment.
+    </p>
+    <p>Merci!</p>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Véhicule</h3>
+    Dommage:  <%= @appointment.try(:vehicule).try(:dommage)%>
+    Marque: <%= @appointment.try(:vehicule).try(:marque).try(:nom)%>
+    Model: <%= @appointment.try(:vehicule).try(:model)%>
+    Année: <%= @appointment.try(:vehicule).try(:annee)%>
+    Type de véhicule: <%= @appointment.try(:vehicule).try(:type_vehicule)%>
+    <hr/>
+    <h3>Rendez-vous</h3>
+    <p>
+    Lieu du rendez-vous:  <%= @appointment.lieu %>
+    Adresse:  <%= @appointment.adresse %>
+    </p>
+    <hr/>
+    <h3>Client</h3>
+    <hr/>
+    <p>
+     Prénom et Nom:  <%= [@appointment.user.prenom,@appointment.user.nom].join(' ') %>
+    </p>
+    <p>
+     Email:  <%= @appointment.user.email%>
+    </p>
+    <p>
+      Télephone: <%= @appointment.user.telephone %>
+    </p>
+</body>
+</html>

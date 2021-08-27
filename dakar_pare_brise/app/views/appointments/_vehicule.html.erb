@@ -1,0 +1,36 @@
+<h3 class="qst-title">Les informations de votre véhicule</h3>
+<%= f.fields_for :vehicule do |v| %>
+    <div  id="marqueInput" class="form-group">
+      <label>Marque *</label>
+      <%= v.select :marque_id, Marque.all.collect {|m| [ m.nom, m.id ] }, { :prompt => 'Choisir la marque'}, {class:"form-control"} %>
+      <small class="error-help">Veuillez indiquer la marque</small>
+    </div>
+    <div id="modeleInput" class="form-group">
+      <label>Model *</label>
+      <%= v.text_field :model, {class:"form-control", placeholde:"Entrez le model"} %>
+      <small class="error-help">Veuillez indiquer le model</small>
+    </div>
+    <div class="form-group">
+      <label>Année</label>
+      <%= v.select :annee ,Date.today.year-20 .. Date.today.year+5, {:prompt => 'Choisir l\'année'}, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <label>Type de véhicule</label>
+      <select name="appointment[vehicule_attributes][type_vehicule]" class="form-control">
+        <option value>Choisir le type </opiton>
+        <option class="berline">Berline</option>
+        <option option="'x'">4x4</option>
+        <option option="break">Break</option>
+        <option option="utilitaire">Utilitaire</option>
+        <option option="autre">Autre</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Matricule</label>
+      <%= v.text_field :matricule, class:"form-control" %>
+    </div>
+    <div class="actions-btn">
+      <a class="btn btn-default btn-return btn-lg" onclick="next(1)"><%=fa_icon "chevron-left"%> Retour</a>
+      <a class="btn btn-success btn-lg pull-xs-right" onclick="next(3)">Continer</a>
+    </div>
+<% end %>

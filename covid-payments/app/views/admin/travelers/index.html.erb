@@ -1,0 +1,62 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  
+  <%= form_tag(admin_travelers_path, method: :get, class: "inline-form search_form") do %>
+    <div class="row py-4 mb-4">
+      <div class="col-md-9">
+        <%= text_field_tag :passport_number, "",  placeholder: "Rechercher par numéro passeport", class:"form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= button_tag(type: "submit", class: "btn btn-secondary") do %>
+        <%= fa_icon "search"%> Rechercher
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mt-4 d-flex flex-row justify-content-between mb-4">
+    <h3>Passagers</h3>
+    <div>
+      <%= link_to new_admin_traveler_path, class: "btn btn-primary" do %>
+        <%= fa_icon "plus" %> Nouveau passager
+      <% end %>
+      <%= link_to admin_travelers_path(format: :csv), class:"btn btn-secondary ml-2" do %>
+        <%= fa_icon "download" %> Exporter
+      <% end %>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Passeport</th>
+        <th>Dernier test le</th>
+        <th>Tests effectués</th>
+        <th>Ajouté le</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @admin_travelers.each do |admin_traveler| %>
+        <tr>
+          <td><%= admin_traveler.first_name || '--' %></td>
+          <td><%= admin_traveler.last_name || '--' %></td>
+          <td><%= admin_traveler.passport_number %></td>
+          <td><%= admin_traveler.last_covid_test&.created_at&.strftime("%d-%m-%Y")  || "--/--/--" %></td>
+          <td>
+            <%= admin_traveler.covid_tests.count %>
+          </td>
+          <td><%= admin_traveler.created_at.strftime("%d/%m/%Y à %H:%M:%S")  %></td>
+          <td><%= link_to 'Modifier', edit_admin_traveler_path(admin_traveler) %></td>
+          <% if current_user.administrator? %>
+          <td><%= link_to 'Supprimer', [:admin, admin_traveler], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          <td>
+            <%= link_to  "Ajouter un test", new_admin_covid_test_path(traveler_id: admin_traveler.id), class:"btn btn-primary btn-sm"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @admin_travelers %>
+</div>

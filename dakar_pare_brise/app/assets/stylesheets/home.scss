@@ -1,0 +1,41 @@
+#steps-details{
+  max-width: 100%;
+}
+#steps-details > .row{
+  margin: 0 !important;
+}
+#steps-details img.etape-icon{
+  max-width: 40px;
+}
+#whoWeAre{
+  padding: 1em 2em;
+  background-color: #fff;
+}
+.rv-btn{
+  background-color: #77E215 !important;
+  font-weight: 700;
+  border: 1px solid #fff !important;
+  padding: 20px;
+  color: #fff;
+}
+.red-text{
+  font-weight: 800 !important;
+  text-shadow: -2px 0px 2px #000 !important;
+}
+.white-right-border{
+  border-right: 1px solid #fff;
+}
+
+.product-item-thumb {
+  text-align: center;
+  border: 1px solid #e3e3e3;
+  padding: 13px;
+}
+.product-item-thumb {
+  .product-title, .product-price {
+    margin: 5px auto;
+  }
+  .product-price {
+    text-transform: uppercase;
+  }
+}
